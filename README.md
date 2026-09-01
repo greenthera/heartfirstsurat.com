@@ -1,75 +1,45 @@
-# React + TypeScript + Vite
+# HeartFirst Surat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website for Dr. Atul D. Abhyankar, Interventional Cardiologist, Surat.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Vite + React 19 + TypeScript
+- `react-router` v7 (declarative) — clean URLs (`/about`, `/career-highlights`, …);
+  old `.html` paths redirect to the clean URL (301-style stub + client redirect)
+- Tailwind CSS v4 (`@tailwindcss/vite`), design tokens in `src/styles/index.css`
+- Custom SSR + prerender: every route is emitted as static HTML in `dist/` so
+  crawlers and no-JS clients get full content
+- Per-page SEO (`src/seo/`): title, meta description, canonical, Open Graph,
+  Twitter card, and `Physician` JSON-LD on the home page
 
-## React Compiler
+## Commands
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+pnpm dev       # dev server
+pnpm test      # vitest
+pnpm lint      # eslint
+pnpm build     # tsc + client build + ssr build + prerender -> dist/
+pnpm preview   # serve dist/
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Deploy: serve `dist/` as static files with an SPA fallback to `index.html`.
+Each route is emitted as both `dist/<seg>.html` and `dist/<seg>/index.html`, so
+`/about`, `/about/` and `/about.html` all resolve on any static host. Old paths
+(`/career-Hightlight.html`, `/trials.html`, …) are redirect stubs to the clean URL.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Content
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+All page copy is transcribed verbatim from the eight live pages of
+heartfirstsurat.com and lives in typed modules under `src/content/`.
+The publications list and the multicentre-trials table are generated from the
+captured source pages in `scripts/source-pages/`:
 
+```bash
+node scripts/extract-publications.mjs   # -> src/content/publications.ts
+node scripts/extract-trials.mjs         # -> src/content/trials.ts
+node scripts/make-og.mjs                # -> public/og-cover.png
 ```
+
+`src/content/cv.ts`, `about.ts`, `facilities.ts`, `services.ts`, `research.ts`
+and `home.ts` are hand-transcribed from the same sources.
