@@ -1,7 +1,7 @@
 type ResearchSection = { heading: string; body?: string }
 
 // Section headings from research.html. The source page carries no descriptive
-// copy under them — it is an index of the doctor's research/education activity —
+// copy under them. It is an index of the doctor's research and education activity,
 // so no body text is invented.
 export const research: ResearchSection[] = [
   { heading: 'Clinical Research' },

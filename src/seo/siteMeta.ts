@@ -28,14 +28,14 @@ type MetaEntry = { title: string; description: string; jsonLd?: object }
 
 const TABLE: Record<string, MetaEntry> = {
   '/': {
-    title: `${doctor.name} — Interventional Cardiologist, Surat | HeartFirst Surat`,
+    title: `${doctor.name}, Interventional Cardiologist in Surat | HeartFirst Surat`,
     description: `${doctor.mainHeading}. Coronary angioplasty, angiography and preventive cardiology at 201 Milestone Leone, Athwagate Circle, Surat.`,
     jsonLd: physician,
   },
   '/about': {
     title: 'About Dr. Atul D. Abhyankar | HeartFirst Surat',
     description:
-      'Know Dr. Atul D. Abhyankar — MD, DM, FACC, FSCAI: short CV, academic activities, honours, full curriculum vitae, publications and clinical research.',
+      'Know Dr. Atul D. Abhyankar, MD, DM, FACC and FSCAI. Explore his CV, academic activities, honours, publications and clinical research.',
   },
   '/career-highlights': {
     title: 'Career Highlights & Full Curriculum Vitae | Dr. Atul D. Abhyankar',
@@ -63,7 +63,7 @@ const TABLE: Record<string, MetaEntry> = {
       'Multicentre national and global trials, original research, academic activities, student dissertations and teaching programs & workshops in interventional cardiology.',
   },
   '/reach-us': {
-    title: 'Reach Us — Appointments & Emergency | HeartFirst Surat',
+    title: 'Reach Us for Appointments and Emergency Care | HeartFirst Surat',
     description:
       'Outpatient appointment numbers for the clinic and Mahavir Heart Institute, plus what to do in a cardiac emergency in Surat.',
   },

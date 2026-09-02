@@ -7,7 +7,7 @@ export default function BrandMark({ onClick }: { onClick?: () => void }) {
       to="/"
       onClick={onClick}
       className="inline-flex max-w-[176px] items-center"
-      aria-label="HeartFirst Surat — home"
+      aria-label="HeartFirst Surat home"
     >
       <img
         src={asset('/original-assets/logo.webp')}

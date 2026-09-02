@@ -59,7 +59,7 @@ for (const path of paths) {
 // 3. Redirect stubs for OLD paths that differ from a clean route's own .html.
 for (const [from, to] of Object.entries(legacyRedirectMap)) {
   const name = from.slice(1)
-  if (name === 'index.html') continue // dist/index.html IS the site root — never a stub
+  if (name === 'index.html') continue // dist/index.html is the site root, never a stub.
   if (ownedHtml.has(name)) continue // e.g. /about.html already serves the real /about page
   const target = withBase(to)
   const stub = `<!doctype html><html lang="en"><head><meta charset="utf-8">

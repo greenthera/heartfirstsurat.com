@@ -15,7 +15,7 @@ export default function Publications() {
         accent="cardiac care forward."
       />
       <Section
-        eyebrow={`${publications.length} peer-reviewed papers, abstracts & chapters — 1986–2020`}
+        eyebrow={`${publications.length} peer-reviewed papers, abstracts and chapters from 1986–2020`}
       >
         <ol className="space-y-4">
           {publications.map(p => (

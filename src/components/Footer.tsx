@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="grid gap-8 sm:grid-cols-3">
         <div>
           <BrandMark />
-          <p className="mt-2">{doctor.name} — Interventional Cardiologist</p>
+          <p className="mt-2">{doctor.name}, Interventional Cardiologist</p>
         </div>
         <nav aria-label="Footer" className="flex flex-col gap-1">
           {navigation.slice(1).map(n => (

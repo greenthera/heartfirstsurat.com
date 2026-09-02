@@ -114,10 +114,10 @@ export default function Career() {
 
       <Section title="Research Projects and Experience in Clinical Investigations">
         <NumberedList items={cv.researchProjects} />
-        <h3 className="label mt-8 text-indigo">Principal Investigator — First-in-Man Stent Trials</h3>
+        <h3 className="label mt-8 text-indigo">Principal Investigator for First-in-Man Stent Trials</h3>
         <NumberedList items={cv.firstInManTrials} />
         <h3 className="label mt-8 text-indigo">
-          Principal Investigator — Phase-4 Trials / Registries (stents)
+          Principal Investigator for Phase-4 Trials and Stent Registries
         </h3>
         <NumberedList items={cv.phase4Trials} />
       </Section>

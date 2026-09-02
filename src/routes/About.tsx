@@ -14,10 +14,11 @@ export default function About() {
       <Seo {...metaFor('/about')} />
       <Masthead n="02" eyebrow="About the Doctor" title="Know About" accent="Dr. Atul Abhyankar" />
       <Section>
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-stretch">
           <Portrait
             src="/original-assets/dr-atul-abhyankar-athwa-gates-surat-cardiologists-lhzu2.webp"
             name={doctor.name}
+            fill
           />
           <div>
             <p className="font-serif text-lg leading-relaxed text-ink">{doctor.credentialLine}</p>

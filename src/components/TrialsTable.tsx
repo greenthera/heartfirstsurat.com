@@ -19,9 +19,9 @@ export default function TrialsTable() {
           {trials.map((t, i) => (
             <tr key={i} className="border-b border-line/60 align-top">
               <td className="py-3 pr-4 font-medium">{t.molecule}</td>
-              <td className="py-3 pr-4 text-mute">{t.condition || '—'}</td>
-              <td className="py-3 pr-4 text-mute">{t.sponsor || '—'}</td>
-              <td className="py-3 text-mute">{t.cro || '—'}</td>
+              <td className="py-3 pr-4 text-mute">{t.condition || 'Not listed'}</td>
+              <td className="py-3 pr-4 text-mute">{t.sponsor || 'Not listed'}</td>
+              <td className="py-3 text-mute">{t.cro || 'Not listed'}</td>
             </tr>
           ))}
         </tbody>

@@ -3,7 +3,7 @@
 export const facilities = {
   description: 'Spacious, elegant and efficient clinic at a convenient central location.',
   address: '201 Milestone Leone, Athwagate Circle, Surat 395001, Gujarat, India',
-  timing: 'Monday to Saturday — 10:00 AM–12:00 Noon & 6:00 PM–9:00 PM',
+  timing: 'Open Monday to Saturday, 10:00 AM–12:00 Noon and 6:00 PM–9:00 PM.',
   apptContacts: ['+91 90992 31122', '+91 261 2472211', '+91 98241 45738'],
   webAppointment: 'atulda@hotmail.com',
   mapQuery: 'Heart First Cardiac And Vascular Centre Surat',
