@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router'
-import { Menu, X } from 'lucide-react'
+import { NavLink, Link } from 'react-router'
+import { Menu, X, Ambulance } from 'lucide-react'
 import { navigation } from '@/content/navigation'
 import BrandMark from '@/components/BrandMark'
 
@@ -59,6 +59,14 @@ export default function Rail() {
             </NavLink>
           ))}
         </nav>
+
+        <Link
+          to="/reach-us#emergency"
+          onClick={() => setOpen(false)}
+          className="mt-5 flex items-center gap-2 border border-danger bg-danger-tint px-3 py-2.5 text-[12px] font-semibold tracking-wide text-danger-deep uppercase hover:bg-danger hover:text-paper"
+        >
+          <Ambulance size={15} /> Emergency
+        </Link>
 
         <p className="mt-auto pt-6 font-display text-[13px] italic text-indigo">
           Precision. Compassion.
