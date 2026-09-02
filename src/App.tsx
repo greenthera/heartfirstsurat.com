@@ -12,7 +12,7 @@ export default function App() {
       <ScrollToTop />
       <Rail />
       <div className="flex min-h-screen min-w-0 flex-col">
-        <main className="min-w-0 flex-1">
+        <main className="min-w-0 flex-1 pt-14 lg:pt-0">
           <Routes>
             {routeList.map(r => (
               <Route key={r.path} path={r.path} element={r.element} />

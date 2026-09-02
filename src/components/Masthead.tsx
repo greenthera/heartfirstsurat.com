@@ -10,7 +10,7 @@ export default function Masthead({
   accent?: string
 }) {
   return (
-    <header className="relative overflow-hidden border-b border-line px-[clamp(1.5rem,5vw,3.5rem)] pb-10 pt-[clamp(3rem,8vw,5rem)] sm:pr-32">
+    <header className="relative overflow-hidden border-b border-line px-[clamp(1.5rem,5vw,3.5rem)] pb-10 pt-[clamp(1.75rem,7vw,5rem)] sm:pr-32">
       <span
         aria-hidden
         className="pointer-events-none absolute -top-2 right-4 hidden font-display text-[clamp(4rem,12vw,8rem)] leading-none text-line/50 sm:block"

@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Seo {...metaFor('/')} />
-      <header className="grid gap-8 border-b border-line px-[clamp(1.5rem,5vw,3.5rem)] pb-12 pt-[clamp(3rem,8vw,5rem)] lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <header className="grid gap-8 border-b border-line px-[clamp(1.5rem,5vw,3.5rem)] pb-12 pt-[clamp(1.75rem,7vw,5rem)] lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
         <div>
           <p className="label flex items-center gap-2 text-indigo">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-yellow" />
