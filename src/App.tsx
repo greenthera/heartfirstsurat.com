@@ -8,7 +8,7 @@ import { routeList, LegacyRedirects } from '@/routes'
 
 export default function App() {
   return (
-    <div className="min-h-screen overflow-x-clip lg:pl-[220px]">
+    <div className="site-shell min-h-screen overflow-x-clip lg:pl-[220px]">
       <ScrollToTop />
       <Rail />
       <div className="flex min-h-screen min-w-0 flex-col">

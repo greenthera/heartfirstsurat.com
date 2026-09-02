@@ -43,6 +43,106 @@
   }
 }
 
+.site-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.site-shell::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  inset: 0 0 0 220px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 85% 8%, color-mix(in srgb, var(--color-indigo) 7%, transparent) 0 1px, transparent 1.5px),
+    linear-gradient(135deg, transparent 49.75%, color-mix(in srgb, var(--color-indigo) 3%, transparent) 50%, transparent 50.25%);
+  background-size: 26px 26px, 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 68%);
+}
+
+.load-reveal {
+  animation: text-arrive 700ms cubic-bezier(.2,.75,.25,1) both;
+}
+
+.load-reveal-delay {
+  animation-delay: 100ms;
+}
+
+@keyframes text-arrive {
+  from { opacity: 0; transform: translateY(18px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.cardiac-illustration {
+  box-shadow: inset 0 0 80px color-mix(in srgb, var(--color-indigo) 5%, transparent);
+}
+
+.cardiac-illustration::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--color-indigo) 10%, transparent);
+}
+
+.heart-beat {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: heart-beat 2.4s ease-in-out infinite;
+}
+
+.diagnostic-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ring-orbit 18s linear infinite;
+}
+
+.ecg-trace {
+  stroke-dasharray: 1;
+  animation: ecg-draw 3.2s ease-in-out infinite;
+}
+
+.ecg-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: signal-pulse 1.6s ease-out infinite;
+}
+
+@keyframes heart-beat {
+  0%, 38%, 52%, 100% { transform: scale(1); }
+  43% { transform: scale(1.025); }
+  47% { transform: scale(.995); }
+}
+
+@keyframes ring-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ecg-draw {
+  0% { stroke-dashoffset: 1; opacity: .2; }
+  35%, 75% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: -1; opacity: .2; }
+}
+
+@keyframes signal-pulse {
+  0%, 100% { transform: scale(.75); opacity: .55; }
+  45% { transform: scale(1.35); opacity: 1; }
+}
+
+@media (max-width: 1023px) {
+  .site-shell::before { left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .load-reveal,
+  .heart-beat,
+  .diagnostic-ring,
+  .ecg-trace,
+  .ecg-dot { animation: none; }
+}
+
 /* micro-label used for eyebrows and nav numbers */
 @utility label {
   font-size: 0.6875rem;

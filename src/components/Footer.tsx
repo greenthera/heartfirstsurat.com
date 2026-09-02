@@ -3,15 +3,14 @@ import ExternalLink from '@/components/ExternalLink'
 import { navigation } from '@/content/navigation'
 import { doctor } from '@/content/doctor'
 import { mapUrl, CLINIC_MAP_QUERY } from '@/lib/maps'
+import BrandMark from '@/components/BrandMark'
 
 export default function Footer() {
   return (
     <footer className="border-t border-line px-[clamp(1.5rem,5vw,3.5rem)] py-12 text-sm text-mute">
       <div className="grid gap-8 sm:grid-cols-3">
         <div>
-          <p className="font-display text-lg text-ink">
-            HeartFirst<span className="text-indigo"> Surat</span>
-          </p>
+          <BrandMark />
           <p className="mt-2">{doctor.name} — Interventional Cardiologist</p>
         </div>
         <nav aria-label="Footer" className="flex flex-col gap-1">

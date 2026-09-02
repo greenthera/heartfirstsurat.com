@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router'
 import { Menu, X } from 'lucide-react'
 import { navigation } from '@/content/navigation'
+import BrandMark from '@/components/BrandMark'
 
 export default function Rail() {
   const [open, setOpen] = useState(false)
@@ -23,13 +24,7 @@ export default function Rail() {
         }`}
       >
         <div className="flex items-center justify-between">
-          <NavLink
-            to="/"
-            className="font-display text-lg leading-none"
-            onClick={() => setOpen(false)}
-          >
-            HeartFirst<span className="text-indigo"> Surat</span>
-          </NavLink>
+          <BrandMark onClick={() => setOpen(false)} />
           <button
             type="button"
             onClick={() => setOpen(false)}

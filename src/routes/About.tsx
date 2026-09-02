@@ -15,7 +15,10 @@ export default function About() {
       <Masthead n="02" eyebrow="About the Doctor" title="Know About" accent="Dr. Atul Abhyankar" />
       <Section>
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <Portrait src="/original-assets/Picture3.webp" name={doctor.name} />
+          <Portrait
+            src="/original-assets/dr-atul-abhyankar-athwa-gates-surat-cardiologists-lhzu2.webp"
+            name={doctor.name}
+          />
           <div>
             <p className="font-serif text-lg leading-relaxed text-ink">{doctor.credentialLine}</p>
             <ul className="mt-8 grid border-t border-line">
