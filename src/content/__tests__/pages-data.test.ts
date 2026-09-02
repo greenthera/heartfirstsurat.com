@@ -3,7 +3,7 @@ import { homeQuickLinks } from '@/content/home'
 import { aboutResources } from '@/content/about'
 import { facilities } from '@/content/facilities'
 import { services } from '@/content/services'
-import { research } from '@/content/research'
+import { dissertations, teachingGroups } from '@/content/research'
 
 describe('page data', () => {
   it('home has the 7 quick-access links verbatim', () => {
@@ -35,14 +35,24 @@ describe('page data', () => {
     expect(services.procedureSlides).toHaveLength(8)
     expect(services.procedureSlides[0]).toBe('/original-assets/slide1.webp')
   })
-  it('research has the 6 source headings', () => {
-    expect(research.map(r => r.heading)).toEqual([
-      'Clinical Research',
-      'Multicentre National & Global Trials',
-      'Original Research',
-      'Academic Activities',
-      'Student Dissertations',
-      'Teaching Programs & Workshops',
+  it('research has the 3 student dissertations with photos', () => {
+    expect(dissertations).toHaveLength(3)
+    expect(dissertations.map(d => d.name)).toEqual([
+      'Dr. Mihir Rathod',
+      'Dr. Gaurang Patel',
+      'Dr. Sunny Patel',
     ])
+    for (const d of dissertations) {
+      expect(d.photo).toMatch(/\.webp$/)
+      expect(d.topic.length).toBeGreaterThan(30)
+    }
+  })
+  it('research has the teaching programme groups', () => {
+    expect(teachingGroups.map(g => g.title)).toEqual([
+      'Cath Lab Workshops',
+      'Post-graduate Teaching Programme',
+      'CME Videos',
+    ])
+    expect(teachingGroups[0].items).toContain('CTO Workshops')
   })
 })
