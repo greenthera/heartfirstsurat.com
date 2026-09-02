@@ -1,19 +1,33 @@
 import { StrictMode, createContext, useContext, useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
 import { Link, NavLink, Navigate, Route, Routes, StaticRouter, useLocation } from "react-router";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { Ambulance, ArrowRight, Menu, Phone, X } from "lucide-react";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 //#region src/components/ScrollToTop.tsx
 function ScrollToTop() {
-	const { pathname } = useLocation();
+	const { pathname, hash, key } = useLocation();
 	useEffect(() => {
-		const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+		const behavior = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+		if (hash) {
+			const el = document.getElementById(hash.slice(1));
+			if (el) {
+				el.scrollIntoView({
+					behavior,
+					block: "start"
+				});
+				return;
+			}
+		}
 		window.scrollTo({
 			top: 0,
 			left: 0,
-			behavior: reduceMotion ? "auto" : "smooth"
+			behavior
 		});
-	}, [pathname]);
+	}, [
+		pathname,
+		hash,
+		key
+	]);
 	return null;
 }
 //#endregion
@@ -120,6 +134,12 @@ function Rail() {
 							children: item.n
 						}), /* @__PURE__ */ jsx("span", { children: item.label })] })
 					}, item.path))
+				}),
+				/* @__PURE__ */ jsxs(Link, {
+					to: "/reach-us#emergency",
+					onClick: () => setOpen(false),
+					className: "mt-5 flex items-center gap-2 border border-danger bg-danger-tint px-3 py-2.5 text-[12px] font-semibold tracking-wide text-danger-deep uppercase hover:bg-danger hover:text-paper",
+					children: [/* @__PURE__ */ jsx(Ambulance, { size: 15 }), " Emergency"]
 				}),
 				/* @__PURE__ */ jsxs("p", {
 					className: "mt-auto pt-6 font-display text-[13px] italic text-indigo",
@@ -502,9 +522,10 @@ function StatBand({ items }) {
 }
 //#endregion
 //#region src/components/Section.tsx
-function Section({ eyebrow, title, children }) {
+function Section({ id, eyebrow, title, children }) {
 	return /* @__PURE__ */ jsxs("section", {
-		className: "border-b border-line px-[clamp(1.5rem,5vw,3.5rem)] py-[clamp(2rem,5vw,3.5rem)]",
+		id,
+		className: "scroll-mt-24 border-b border-line px-[clamp(1.5rem,5vw,3.5rem)] py-[clamp(2rem,5vw,3.5rem)]",
 		children: [
 			eyebrow && /* @__PURE__ */ jsx("p", {
 				className: "label text-mute",
@@ -2292,6 +2313,7 @@ function Research() {
 }
 //#endregion
 //#region src/routes/ReachUs.tsx
+var emergencyNumbers = ["9824145738", "9825145738"];
 var clinic = [
 	"+91-9099231122",
 	"+91-261-2472211",
@@ -2317,43 +2339,60 @@ function ReachUs() {
 			title: "Reach",
 			accent: "HeartFirst"
 		}),
-		/* @__PURE__ */ jsxs(Section, {
-			eyebrow: "Emergency",
-			title: "What to do in an Emergency Situation?",
-			children: [/* @__PURE__ */ jsxs("p", {
-				className: "font-serif text-[15px] leading-relaxed text-ink",
+		/* @__PURE__ */ jsx("section", {
+			id: "emergency",
+			className: "scroll-mt-24 border-b border-line px-[clamp(1.5rem,5vw,3.5rem)] py-[clamp(2rem,5vw,3.5rem)]",
+			children: /* @__PURE__ */ jsxs("div", {
+				className: "border-l-4 border-danger bg-danger-tint p-5 sm:p-7",
 				children: [
-					"You can call",
-					" ",
-					/* @__PURE__ */ jsx("a", {
-						href: "tel:9824145738",
-						className: "text-indigo",
-						children: "9824145738"
+					/* @__PURE__ */ jsxs("p", {
+						className: "label flex items-center gap-2 text-danger",
+						children: [/* @__PURE__ */ jsx(Ambulance, { size: 16 }), " Emergency"]
 					}),
-					" ",
-					"/",
-					" ",
-					/* @__PURE__ */ jsx("a", {
-						href: "tel:9825145738",
-						className: "text-indigo",
-						children: "9825145738"
+					/* @__PURE__ */ jsx("h2", {
+						className: "mt-2 font-display text-2xl font-light text-danger-deep md:text-3xl",
+						children: "What to do in an Emergency Situation?"
 					}),
-					" ",
-					"at any time of day or night for a genuine emergency."
+					/* @__PURE__ */ jsx("div", {
+						className: "mt-5 flex flex-wrap gap-3",
+						children: emergencyNumbers.map((n) => /* @__PURE__ */ jsxs("a", {
+							href: `tel:${n}`,
+							className: "inline-flex items-center gap-2 bg-danger px-5 py-3 font-display text-lg text-paper hover:bg-danger-deep",
+							children: [
+								/* @__PURE__ */ jsx(Phone, { size: 16 }),
+								" ",
+								n
+							]
+						}, n))
+					}),
+					/* @__PURE__ */ jsx("p", {
+						className: "mt-4 font-serif text-[15px] leading-relaxed text-ink",
+						children: "Call these numbers at any time of day or night for a genuine emergency."
+					}),
+					/* @__PURE__ */ jsxs("p", {
+						className: "mt-3 font-serif text-[15px] leading-relaxed text-ink",
+						children: [
+							"Or call",
+							" ",
+							/* @__PURE__ */ jsx("a", {
+								href: "tel:108",
+								className: "font-semibold text-danger-deep",
+								children: "108"
+							}),
+							" ",
+							"and reach the Emergency Department of",
+							" ",
+							/* @__PURE__ */ jsx(ExternalLink, {
+								href: mapUrl("Mahavir Heart Institute, Ring Road, Athwagate, Surat"),
+								className: "text-danger-deep underline underline-offset-2",
+								children: "Mahavir Heart Institute, Ring Road, Athwagate, Surat"
+							}),
+							" ",
+							"at the earliest."
+						]
+					})
 				]
-			}), /* @__PURE__ */ jsxs("p", {
-				className: "mt-3 font-serif text-[15px] leading-relaxed text-ink",
-				children: [
-					"Call 108 or reach in your vehicle at the earliest to the Emergency Department of",
-					" ",
-					/* @__PURE__ */ jsx(ExternalLink, {
-						href: mapUrl("Mahavir Heart Institute, Ring Road, Athwagate, Surat"),
-						className: "text-indigo underline underline-offset-2",
-						children: "Mahavir Heart Institute, Ring Road, Athwagate, Surat"
-					}),
-					"."
-				]
-			})]
+			})
 		}),
 		/* @__PURE__ */ jsx(Section, {
 			eyebrow: "Out Patient Appointments",
