@@ -1,3 +1,5 @@
+import { asset } from '@/lib/asset'
+
 export default function Gallery({
   images,
   altPrefix,
@@ -10,7 +12,7 @@ export default function Gallery({
       {images.map((src, i) => (
         <figure key={src} className="border border-line bg-paper">
           <img
-            src={src}
+            src={asset(src)}
             alt={`${altPrefix} ${i + 1}`}
             loading="lazy"
             className="aspect-[4/3] w-full object-contain"

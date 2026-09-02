@@ -14,7 +14,7 @@ export function SeoProvider({ sink, children }: { sink: SeoSink; children: React
   return <SeoContext.Provider value={sink}>{children}</SeoContext.Provider>
 }
 
-const SITE = 'https://heartfirstsurat.com'
+const SITE = (import.meta.env.VITE_SITE_URL || 'https://heartfirstsurat.com').replace(/\/$/, '')
 const OG_IMAGE = `${SITE}/og-cover.png`
 
 function esc(s: string) {
