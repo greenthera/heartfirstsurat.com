@@ -16,11 +16,12 @@ Website for Dr. Atul D. Abhyankar, Interventional Cardiologist, Surat.
 ## Commands
 
 ```bash
-pnpm dev       # dev server
-pnpm test      # vitest
-pnpm lint      # eslint
-pnpm build     # tsc + client build + ssr build + prerender -> dist/
-pnpm preview   # serve dist/
+pnpm dev          # dev server
+pnpm lint         # eslint
+pnpm build        # tsc + client build + ssr build + prerender -> dist/  (base "/")
+pnpm build:pages  # same, base "/heartfirstsurat.com/"  (GitHub Pages sub-path)
+pnpm preview      # serve dist/
+pnpm deploy       # build:pages + publish dist/ to the gh-pages branch
 ```
 
 Deploy: serve `dist/` as static files with an SPA fallback to `index.html`.
