@@ -2139,13 +2139,47 @@ function Services() {
 }
 //#endregion
 //#region src/content/research.ts
-var research = [
-	{ heading: "Clinical Research" },
-	{ heading: "Multicentre National & Global Trials" },
-	{ heading: "Original Research" },
-	{ heading: "Academic Activities" },
-	{ heading: "Student Dissertations" },
-	{ heading: "Teaching Programs & Workshops" }
+var dissertations = [
+	{
+		name: "Dr. Mihir Rathod",
+		photo: "/original-assets/Pic1.webp",
+		topic: "A study of left ventricular remodeling by 2D echocardiography in anterior wall ST elevation myocardial infarction following primary percutaneous transluminal coronary angioplasty."
+	},
+	{
+		name: "Dr. Gaurang Patel",
+		photo: "/original-assets/Pic2.webp",
+		topic: "Impact of baseline WBC counts and haemoglobin on in-hospital and medium-term outcome in acute myocardial infarction patients treated with primary PCI."
+	},
+	{
+		name: "Dr. Sunny Patel",
+		photo: "/original-assets/Pic3.webp",
+		topic: "Prognostic significance of heart rate, blood pressure and blood sugar level in patients undergoing primary angioplasty in myocardial infarction.",
+		ongoing: true
+	}
+];
+var teachingGroups = [
+	{
+		title: "Cath Lab Workshops",
+		items: [
+			"Preceptorship in Advanced Cardiac Technology (PACT)",
+			"Skill Advancement for Cathlab Technicians (SECT)",
+			"CTO Workshops",
+			"Live Case Demonstrations"
+		]
+	},
+	{
+		title: "Post-graduate Teaching Programme",
+		items: [
+			"Interactive ECG Sessions",
+			"Focused Reviews",
+			"Journal Club",
+			"Case Presentation"
+		]
+	},
+	{
+		title: "CME Videos",
+		items: ["CME videos for physicians and family practitioners"]
+	}
 ];
 //#endregion
 //#region src/routes/Research.tsx
@@ -2158,18 +2192,102 @@ function Research() {
 			title: "Clinical Research",
 			accent: "& Education"
 		}),
-		research.map((s, i) => /* @__PURE__ */ jsxs(Section, {
-			eyebrow: String(i + 1).padStart(2, "0"),
-			title: s.heading,
-			children: [s.body && /* @__PURE__ */ jsx("p", {
+		/* @__PURE__ */ jsx(Section, {
+			eyebrow: "01",
+			title: "Clinical Research",
+			children: /* @__PURE__ */ jsxs("p", {
 				className: "font-serif text-[15px] leading-relaxed text-ink",
-				children: s.body
-			}), s.heading === "Multicentre National & Global Trials" && /* @__PURE__ */ jsx(Link, {
-				to: "/career-highlights",
-				className: "text-indigo hover:underline",
-				children: "See the full trials table →"
-			})]
-		}, s.heading))
+				children: [
+					"Principal Investigator for multicentre national and global clinical trials, including first-in-man and Phase-4 studies. See the",
+					" ",
+					/* @__PURE__ */ jsx(Link, {
+						to: "/career-highlights",
+						className: "text-indigo hover:underline",
+						children: "full research record on the Career Highlights page"
+					}),
+					"."
+				]
+			})
+		}),
+		/* @__PURE__ */ jsx(Section, {
+			eyebrow: "02",
+			title: "Multicentre National & Global Trials",
+			children: /* @__PURE__ */ jsx(TrialsTable, {})
+		}),
+		/* @__PURE__ */ jsx(Section, {
+			eyebrow: "03",
+			title: "Original Research",
+			children: /* @__PURE__ */ jsxs("p", {
+				className: "font-serif text-[15px] leading-relaxed text-ink",
+				children: [
+					"More than 100 peer-reviewed papers, abstracts and book chapters — see",
+					" ",
+					/* @__PURE__ */ jsx(Link, {
+						to: "/scientific-publications",
+						className: "text-indigo hover:underline",
+						children: "Scientific Publications"
+					}),
+					"."
+				]
+			})
+		}),
+		/* @__PURE__ */ jsx(Section, {
+			eyebrow: "04",
+			title: "Academic Activities",
+			children: /* @__PURE__ */ jsx("p", {
+				className: "font-serif text-[15px] leading-relaxed text-ink",
+				children: "Invited faculty at more than 50 national and international conferences and workshops; Course Director for six clinical conferences; Superspecialty (Cardiology) teacher for the Diplomate of National Board."
+			})
+		}),
+		/* @__PURE__ */ jsx(Section, {
+			eyebrow: "05",
+			title: "Student Dissertations",
+			children: /* @__PURE__ */ jsx("ul", {
+				className: "grid gap-6 sm:grid-cols-2 lg:grid-cols-3",
+				children: dissertations.map((d) => /* @__PURE__ */ jsxs("li", {
+					className: "border border-line",
+					children: [/* @__PURE__ */ jsx("img", {
+						src: asset(d.photo),
+						alt: d.name,
+						loading: "lazy",
+						className: "aspect-[4/5] w-full object-cover"
+					}), /* @__PURE__ */ jsxs("div", {
+						className: "p-4",
+						children: [
+							/* @__PURE__ */ jsx("p", {
+								className: "font-display text-lg leading-tight",
+								children: d.name
+							}),
+							d.ongoing && /* @__PURE__ */ jsx("p", {
+								className: "label mt-1 text-indigo",
+								children: "Ongoing"
+							}),
+							/* @__PURE__ */ jsx("p", {
+								className: "mt-2 font-serif text-[14px] leading-relaxed text-mute",
+								children: d.topic
+							})
+						]
+					})]
+				}, d.name))
+			})
+		}),
+		/* @__PURE__ */ jsx(Section, {
+			eyebrow: "06",
+			title: "Teaching Programs & Workshops",
+			children: /* @__PURE__ */ jsx("div", {
+				className: "grid gap-8 sm:grid-cols-3",
+				children: teachingGroups.map((g) => /* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("h3", {
+					className: "label text-indigo",
+					children: g.title
+				}), /* @__PURE__ */ jsx("ul", {
+					className: "mt-3 space-y-2 font-serif text-[15px] leading-relaxed text-ink",
+					children: g.items.map((it) => /* @__PURE__ */ jsx("li", {
+						className: "border-t border-line pt-2",
+						children: it
+					}, it))
+				})] }, g.title))
+			})
+		})
 	] });
 }
 //#endregion
