@@ -263,7 +263,7 @@ function Footer() {
 				"Developed by",
 				" ",
 				/* @__PURE__ */ jsx(ExternalLink, {
-					href: "https://shivantra.com",
+					href: "https://shivantra.com/?utm_source=heartfirstsurat.com&utm_medium=referral&utm_campaign=client_footer",
 					className: "font-semibold text-indigo hover:underline",
 					children: "Shivantra"
 				})
